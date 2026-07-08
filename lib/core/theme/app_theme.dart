@@ -1,293 +1,130 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'app_colors.dart';
+import 'app_text_styles.dart';
+import 'app_spacing.dart';
+import 'app_radius.dart';
+import 'app_shadows.dart';
 
 class AttorniumTheme {
   AttorniumTheme._();
 
-  // Core colors
-  static const Color navy900 = Color(0xFF00162F);
-  static const Color navy800 = Color(0xFF002045);
-  static const Color navy700 = Color(0xFF0B2A4A);
-
-  static const Color gold500 = Color(0xFFD6A83F);
-  static const Color gold400 = Color(0xFFE9C349);
-  static const Color goldSoft = Color(0xFFFFF4D6);
-
-  static const Color surface = Color(0xFFF7F9FB);
-  static const Color cardWhite = Color(0xFFFFFFFF);
-  static const Color border = Color(0xFFE2E8F0);
-
-  static const Color textPrimary = Color(0xFF001B3C);
-  static const Color textSecondary = Color(0xFF43474E);
-  static const Color textMuted = Color(0xFF74777F);
-
-  static const Color success = Color(0xFF2E9E5D);
-  static const Color successBg = Color(0xFFE7F6EC);
-
-  static const Color info = Color(0xFF2D6CDF);
-  static const Color infoBg = Color(0xFFEAF2FF);
-
   static ThemeData get lightTheme {
-    final baseFontFamily = GoogleFonts.notoSansThai().fontFamily;
-
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-
-      fontFamily: baseFontFamily,
-
-      scaffoldBackgroundColor: surface,
+      fontFamily: AppTextStyles.baseFontFamily,
+      scaffoldBackgroundColor: AppColors.surface,
 
       colorScheme: const ColorScheme.light(
-        primary: navy800,
+        primary: AppColors.navy800,
         onPrimary: Colors.white,
-        secondary: gold500,
-        onSecondary: navy900,
-        tertiary: success,
-        surface: surface,
-        onSurface: textPrimary,
-        error: Color(0xFFBA1A1A),
+        secondary: AppColors.gold500,
+        onSecondary: AppColors.navy900,
+        tertiary: AppColors.success,
+        surface: AppColors.surface,
+        onSurface: AppColors.textPrimary,
+        error: AppColors.error,
       ),
 
       appBarTheme: AppBarTheme(
-        backgroundColor: navy900,
+        backgroundColor: AppColors.navy900,
         foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
-        iconTheme: const IconThemeData(color: gold400),
-        titleTextStyle: TextStyle(
-          fontFamily: baseFontFamily,
-          fontSize: 24,
-          fontWeight: FontWeight.w700,
-          color: gold400,
-        ),
+        iconTheme: const IconThemeData(color: AppColors.gold400),
+        titleTextStyle: AppTextStyles.appBarTitle,
       ),
 
-      textTheme: const TextTheme(
-        displayLarge: TextStyle(
-          fontSize: 57,
-          height: 1.12,
-          fontWeight: FontWeight.w400,
-          letterSpacing: -0.25,
-          color: textPrimary,
-        ),
-        displayMedium: TextStyle(
-          fontSize: 45,
-          height: 1.16,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0,
-          color: textPrimary,
-        ),
-        displaySmall: TextStyle(
-          fontSize: 36,
-          height: 1.22,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0,
-          color: textPrimary,
-        ),
-        headlineLarge: TextStyle(
-          fontSize: 32,
-          height: 1.25,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0,
-          color: textPrimary,
-        ),
-        headlineMedium: TextStyle(
-          fontSize: 28,
-          height: 1.29,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0,
-          color: textPrimary,
-        ),
-        headlineSmall: TextStyle(
-          fontSize: 24,
-          height: 1.33,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0,
-          color: textPrimary,
-        ),
-        titleLarge: TextStyle(
-          fontSize: 22,
-          height: 1.27,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0,
-          color: textPrimary,
-        ),
-        titleMedium: TextStyle(
-          fontSize: 16,
-          height: 1.5,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.15,
-          color: textPrimary,
-        ),
-        titleSmall: TextStyle(
-          fontSize: 14,
-          height: 1.43,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.1,
-          color: textPrimary,
-        ),
-        bodyLarge: TextStyle(
-          fontSize: 16,
-          height: 1.5,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.5,
-          color: textSecondary,
-        ),
-        bodyMedium: TextStyle(
-          fontSize: 14,
-          height: 1.43,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.25,
-          color: textSecondary,
-        ),
-        bodySmall: TextStyle(
-          fontSize: 12,
-          height: 1.33,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.4,
-          color: textMuted,
-        ),
-        labelLarge: TextStyle(
-          fontSize: 14,
-          height: 1.43,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.1,
-          color: textPrimary,
-        ),
-        labelMedium: TextStyle(
-          fontSize: 12,
-          height: 1.33,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5,
-          color: textPrimary,
-        ),
-        labelSmall: TextStyle(
-          fontSize: 11,
-          height: 1.45,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5,
-          color: textMuted,
-        ),
-      ),
+      textTheme: AppTextStyles.textTheme,
 
       cardTheme: CardThemeData(
-        color: cardWhite,
+        color: AppColors.cardWhite,
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-          side: const BorderSide(color: border),
+          borderRadius: AppRadius.tripleExtraLarge,
+          side: const BorderSide(color: AppColors.border),
         ),
-        shadowColor: navy900.withValues(alpha: 0.08),
+        shadowColor: AppColors.navy900.withValues(alpha: 0.08),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: navy900,
+          backgroundColor: AppColors.navy900,
           foregroundColor: Colors.white,
           elevation: 4,
-          shadowColor: navy900.withValues(alpha: 0.18),
+          shadowColor: AppColors.navy900.withValues(alpha: 0.18),
           minimumSize: const Size.fromHeight(52),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.xl,
+            vertical: 14,
           ),
-          textStyle: TextStyle(
-            fontFamily: baseFontFamily,
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-          ),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.large),
+          textStyle: AppTextStyles.buttonText,
         ),
       ),
 
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: navy800,
+          foregroundColor: AppColors.navy800,
           minimumSize: const Size.fromHeight(52),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-          side: const BorderSide(color: border),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.xl,
+            vertical: 14,
           ),
-          textStyle: TextStyle(
-            fontFamily: baseFontFamily,
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-          ),
+          side: const BorderSide(color: AppColors.border),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.large),
+          textStyle: AppTextStyles.buttonText,
         ),
       ),
 
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
-        hintStyle: const TextStyle(
-          color: Color(0xFF9AA0A6),
-          fontSize: 16,
-          height: 1.5,
-        ),
-        labelStyle: const TextStyle(
-          color: textPrimary,
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-        ),
+        hintStyle: AppTextStyles.inputHint,
+        labelStyle: AppTextStyles.inputLabel,
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.lg,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: border),
+          borderRadius: AppRadius.large,
+          borderSide: const BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: border),
+          borderRadius: AppRadius.large,
+          borderSide: const BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: gold500, width: 1.4),
+          borderRadius: AppRadius.large,
+          borderSide: const BorderSide(color: AppColors.gold500, width: 1.4),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Color(0xFFBA1A1A)),
+          borderRadius: AppRadius.large,
+          borderSide: const BorderSide(color: AppColors.error),
         ),
       ),
 
       chipTheme: ChipThemeData(
         backgroundColor: Colors.white,
-        selectedColor: navy800,
-        disabledColor: const Color(0xFFE6E8EA),
-        labelStyle: TextStyle(
-          fontFamily: baseFontFamily,
-          color: textPrimary,
-          fontWeight: FontWeight.w600,
+        selectedColor: AppColors.navy800,
+        disabledColor: AppColors.disabled,
+        labelStyle: AppTextStyles.chipLabel,
+        secondaryLabelStyle: AppTextStyles.chipLabelSelected,
+        side: const BorderSide(color: AppColors.border),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.rounded),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md,
+          vertical: 10,
         ),
-        secondaryLabelStyle: TextStyle(
-          fontFamily: baseFontFamily,
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-        ),
-        side: const BorderSide(color: border),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(999),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       ),
 
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: navy900,
-        selectedItemColor: gold400,
-        unselectedItemColor: const Color(0xFFAAB0BA),
-        selectedLabelStyle: TextStyle(
-          fontFamily: baseFontFamily,
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
-        ),
-        unselectedLabelStyle: TextStyle(
-          fontFamily: baseFontFamily,
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-        ),
+        backgroundColor: AppColors.navy900,
+        selectedItemColor: AppColors.gold400,
+        unselectedItemColor: AppColors.unselectedIcon,
+        selectedLabelStyle: AppTextStyles.bottomNavSelected,
+        unselectedLabelStyle: AppTextStyles.bottomNavUnselected,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
       ),
@@ -299,57 +136,36 @@ class AttorniumTheme {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
-        navy900,
-        Color(0xFF001B36),
-        Color(0xFF00152A),
+        AppColors.navy900,
+        AppColors.navyPanelBg1,
+        AppColors.navyPanelBg2,
       ],
     ),
   );
 
   static BoxDecoration whitePanel = BoxDecoration(
     color: Colors.white,
-    borderRadius: BorderRadius.circular(28),
-    border: Border.all(color: border),
-    boxShadow: [
-      BoxShadow(
-        color: navy900.withValues(alpha: 0.08),
-        blurRadius: 24,
-        offset: const Offset(0, 10),
-      ),
-    ],
+    borderRadius: AppRadius.hugeRadius,
+    border: Border.all(color: AppColors.border),
+    boxShadow: AppShadows.card,
   );
 
   static BoxDecoration whiteCard = BoxDecoration(
     color: Colors.white,
-    borderRadius: BorderRadius.circular(20),
-    border: Border.all(color: border),
-    boxShadow: [
-      BoxShadow(
-        color: navy900.withValues(alpha: 0.06),
-        blurRadius: 18,
-        offset: const Offset(0, 8),
-      ),
-    ],
+    borderRadius: AppRadius.doubleExtraLarge,
+    border: Border.all(color: AppColors.border),
+    boxShadow: AppShadows.cardSmall,
   );
 
   static BoxDecoration navyCard = BoxDecoration(
     gradient: const LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      colors: [
-        navy800,
-        navy900,
-      ],
+      colors: [AppColors.navy800, AppColors.navy900],
     ),
-    borderRadius: BorderRadius.circular(24),
-    border: Border.all(color: gold500.withValues(alpha: 0.75)),
-    boxShadow: [
-      BoxShadow(
-        color: navy900.withValues(alpha: 0.3),
-        blurRadius: 28,
-        offset: const Offset(0, 14),
-      ),
-    ],
+    borderRadius: AppRadius.tripleExtraLarge,
+    border: Border.all(color: AppColors.gold500.withValues(alpha: 0.75)),
+    boxShadow: AppShadows.glow,
   );
 
   static BoxDecoration goldButton = BoxDecoration(
@@ -357,18 +173,12 @@ class AttorniumTheme {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [
-        Color(0xFFFFD96B),
-        gold400,
-        Color(0xFFC9972C),
+        AppColors.goldButtonBg1,
+        AppColors.gold400,
+        AppColors.goldButtonBg3,
       ],
     ),
-    borderRadius: BorderRadius.circular(18),
-    boxShadow: [
-      BoxShadow(
-        color: gold500.withValues(alpha: 0.3),
-        blurRadius: 18,
-        offset: const Offset(0, 8),
-      ),
-    ],
+    borderRadius: AppRadius.extraLarge,
+    boxShadow: AppShadows.goldButton,
   );
 }

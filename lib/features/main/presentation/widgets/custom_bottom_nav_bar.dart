@@ -1,12 +1,12 @@
+import 'package:attornium/core/theme/app_spacing.dart';
+import 'package:attornium/core/theme/app_radius.dart';
+import 'package:attornium/core/theme/app_colors.dart';
+import 'package:attornium/core/theme/app_shadows.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/theme/app_theme.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({
-    super.key,
-    required this.navigationShell,
-  });
+  const CustomBottomNavBar({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
@@ -21,19 +21,20 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 12.0),
+        padding: const EdgeInsets.only(
+          left: AppSpacing.xxl,
+          right: AppSpacing.xxl,
+          bottom: AppSpacing.md,
+        ),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.xs,
+            vertical: AppSpacing.xs,
+          ),
           decoration: BoxDecoration(
-            color: AttorniumTheme.navy900,
-            borderRadius: BorderRadius.circular(40),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.2),
-                blurRadius: 20,
-                offset: const Offset(0, 10),
-              ),
-            ],
+            color: AppColors.navy900,
+            borderRadius: AppRadius.rounded,
+            boxShadow: AppShadows.bottomNav,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,7 +88,7 @@ class CustomBottomNavBar extends StatelessWidget {
   }) {
     final isSelected = navigationShell.currentIndex == index;
     final theme = Theme.of(context).bottomNavigationBarTheme;
-    final selectedColor = theme.selectedItemColor ?? AttorniumTheme.gold400;
+    final selectedColor = theme.selectedItemColor ?? AppColors.gold400;
     final unselectedColor =
         theme.unselectedItemColor ?? const Color(0xFFAAB0BA);
 

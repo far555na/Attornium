@@ -1,7 +1,9 @@
+import 'package:attornium/core/theme/app_spacing.dart';
+import 'package:attornium/core/theme/app_radius.dart';
+import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../view_models/home_view_model.dart';
-import '../../../../core/theme/app_theme.dart';
 import '../widgets/new_case_card.dart';
 import '../widgets/recent_case_card.dart';
 
@@ -13,7 +15,7 @@ class HomePage extends ConsumerWidget {
     final homeState = ref.watch(homeViewModelProvider);
 
     return Scaffold(
-      backgroundColor: AttorniumTheme.navy900,
+      backgroundColor: AppColors.navy900,
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -24,8 +26,8 @@ class HomePage extends ConsumerWidget {
                   // Header
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      vertical: 16.0,
+                      horizontal: AppSpacing.xxl,
+                      vertical: AppSpacing.lg,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,15 +36,15 @@ class HomePage extends ConsumerWidget {
                           children: [
                             const Icon(
                               Icons.account_balance,
-                              color: AttorniumTheme.gold500,
+                              color: AppColors.gold500,
                               size: 28,
                             ),
-                            const SizedBox(width: 12),
+                            const SizedBox(width: AppSpacing.md),
                             Text(
                               'LegalConnect',
                               style: Theme.of(context).textTheme.titleLarge
                                   ?.copyWith(
-                                    color: AttorniumTheme.gold500,
+                                    color: AppColors.gold500,
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
@@ -52,7 +54,7 @@ class HomePage extends ConsumerWidget {
                           children: [
                             const Icon(
                               Icons.notifications_outlined,
-                              color: AttorniumTheme.gold400,
+                              color: AppColors.gold400,
                               size: 28,
                             ),
                             Positioned(
@@ -62,7 +64,7 @@ class HomePage extends ConsumerWidget {
                                 width: 10,
                                 height: 10,
                                 decoration: const BoxDecoration(
-                                  color: AttorniumTheme.gold500,
+                                  color: AppColors.gold500,
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -75,11 +77,13 @@ class HomePage extends ConsumerWidget {
 
                   // Greeting
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.xxl,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 16),
+                        const SizedBox(height: AppSpacing.lg),
                         Text(
                           'สวัสดีครับ คุณสมชาย',
                           style: Theme.of(context).textTheme.headlineSmall
@@ -88,15 +92,15 @@ class HomePage extends ConsumerWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: AppSpacing.sm),
                         Text(
                           'ยินดีต้อนรับกลับมา วันนี้มีอะไรให้เราช่วยไหมครับ?',
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(color: Colors.white.withAlpha(204)),
                         ),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: AppSpacing.xxl),
                         const NewCaseCard(),
-                        const SizedBox(height: 32),
+                        const SizedBox(height: AppSpacing.xxxl),
                       ],
                     ),
                   ),
@@ -110,15 +114,20 @@ class HomePage extends ConsumerWidget {
             child: Container(
               width: double.infinity,
               decoration: const BoxDecoration(
-                color: AttorniumTheme.surface,
+                color: AppColors.surface,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(32),
-                  topRight: Radius.circular(32),
+                  topLeft: Radius.circular(AppRadius.giant),
+                  topRight: Radius.circular(AppRadius.giant),
                 ),
               ),
               clipBehavior: Clip.antiAlias,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 24.0),
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.xxl,
+                  AppSpacing.xxxl,
+                  AppSpacing.xxl,
+                  AppSpacing.xxl,
+                ),
                 child: Column(
                   children: [
                     Row(
@@ -141,12 +150,12 @@ class HomePage extends ConsumerWidget {
                               Text(
                                 'ดูทั้งหมด',
                                 style: Theme.of(context).textTheme.labelLarge
-                                    ?.copyWith(color: AttorniumTheme.gold500),
+                                    ?.copyWith(color: AppColors.gold500),
                               ),
-                              const SizedBox(width: 4),
+                              const SizedBox(width: AppSpacing.xs),
                               const Icon(
                                 Icons.chevron_right,
-                                color: AttorniumTheme.gold500,
+                                color: AppColors.gold500,
                                 size: 20,
                               ),
                             ],
@@ -154,27 +163,33 @@ class HomePage extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: AppSpacing.lg),
                     if (homeState.isLoading)
-                      const Center(child: CircularProgressIndicator(color: AttorniumTheme.gold500))
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.gold500,
+                        ),
+                      )
                     else
-                      ...homeState.recentCases.map((caseEntity) => Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: RecentCaseCard(
-                              title: caseEntity.title,
-                              caseId: caseEntity.caseId,
-                              status: caseEntity.status,
-                              statusColor: caseEntity.statusColor,
-                              statusBgColor: caseEntity.statusBgColor,
-                              lawyerName: caseEntity.lawyerName,
-                              lawyerAction: caseEntity.lawyerAction,
-                              lawyerImage: caseEntity.lawyerImage,
-                              icon: caseEntity.icon,
-                              hasActions: caseEntity.hasActions,
-                              isSearching: caseEntity.isSearching,
-                              searchProgress: caseEntity.searchProgress,
-                            ),
-                          )),
+                      ...homeState.recentCases.map(
+                        (caseEntity) => Padding(
+                          padding: const EdgeInsets.only(bottom: AppSpacing.lg),
+                          child: RecentCaseCard(
+                            title: caseEntity.title,
+                            caseId: caseEntity.caseId,
+                            status: caseEntity.status,
+                            statusColor: caseEntity.statusColor,
+                            statusBgColor: caseEntity.statusBgColor,
+                            lawyerName: caseEntity.lawyerName,
+                            lawyerAction: caseEntity.lawyerAction,
+                            lawyerImage: caseEntity.lawyerImage,
+                            icon: caseEntity.icon,
+                            hasActions: caseEntity.hasActions,
+                            isSearching: caseEntity.isSearching,
+                            searchProgress: caseEntity.searchProgress,
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               ),

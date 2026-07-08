@@ -1,3 +1,5 @@
+import 'package:attornium/core/theme/app_spacing.dart';
+import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 
@@ -8,7 +10,7 @@ class NewCaseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AttorniumTheme.navyCard,
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.all(AppSpacing.xxl),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -23,7 +25,7 @@ class NewCaseCard extends StatelessWidget {
                 child: const Icon(
                   Icons.history_edu,
                   size: 140,
-                  color: AttorniumTheme.gold500,
+                  color: AppColors.gold500,
                 ),
               ),
             ),
@@ -35,39 +37,45 @@ class NewCaseCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: AttorniumTheme.gold500, width: 1.5),
+                      border: Border.all(color: AppColors.gold500, width: 1.5),
                     ),
-                    child: const Icon(Icons.post_add, color: AttorniumTheme.gold500, size: 28),
+                    child: const Icon(
+                      Icons.post_add,
+                      color: AppColors.gold500,
+                      size: 28,
+                    ),
                   ),
-                  const SizedBox(width: 16),
+                  const SizedBox(width: AppSpacing.lg),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'เริ่มคดีใหม่',
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: AppSpacing.sm),
                         Text(
                           'อธิบายปัญหาของคุณ เพื่อหาทนายที่เชี่ยวชาญเฉพาะทางมาช่วยดูแลคดีของคุณอย่างมืออาชีพ',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.white.withValues(alpha: 0.85),
-                            height: 1.6,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: Colors.white.withValues(alpha: 0.85),
+                                height: 1.6,
+                              ),
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: AppSpacing.xxl),
               Container(
                 decoration: AttorniumTheme.goldButton,
                 child: ElevatedButton(
@@ -75,21 +83,22 @@ class NewCaseCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
                     shadowColor: Colors.transparent,
-                    foregroundColor: AttorniumTheme.navy900,
+                    foregroundColor: AppColors.navy900,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(Icons.chat_outlined, size: 22),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         'ปรึกษาทนายตอนนี้',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: AttorniumTheme.navy900,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              color: AppColors.navy900,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: AppSpacing.sm),
                       const Icon(Icons.chevron_right, size: 22),
                     ],
                   ),

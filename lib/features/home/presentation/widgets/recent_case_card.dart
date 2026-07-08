@@ -1,3 +1,6 @@
+import 'package:attornium/core/theme/app_spacing.dart';
+import 'package:attornium/core/theme/app_radius.dart';
+import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 
@@ -35,7 +38,7 @@ class RecentCaseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AttorniumTheme.whiteCard,
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(AppSpacing.xl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -45,12 +48,12 @@ class RecentCaseCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(14),
                 decoration: const BoxDecoration(
-                  color: AttorniumTheme.navy900,
+                  color: AppColors.navy900,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(icon, color: AttorniumTheme.gold500, size: 28),
+                child: Icon(icon, color: AppColors.gold500, size: 28),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: AppSpacing.lg),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,10 +73,13 @@ class RecentCaseCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.md,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: statusBgColor,
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: AppRadius.rounded,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -87,9 +93,9 @@ class RecentCaseCard extends StatelessWidget {
                     ],
                     Text(
                       status,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: statusColor,
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelSmall?.copyWith(color: statusColor),
                     ),
                   ],
                 ),
@@ -97,16 +103,20 @@ class RecentCaseCard extends StatelessWidget {
             ],
           ),
           if (lawyerName != null) ...[
-            const SizedBox(height: 20),
+            const SizedBox(height: AppSpacing.xl),
             Row(
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: lawyerImage != null ? NetworkImage(lawyerImage!) : null,
-                  backgroundColor: AttorniumTheme.border,
-                  child: lawyerImage == null ? const Icon(Icons.person, color: AttorniumTheme.textMuted) : null,
+                  backgroundImage: lawyerImage != null
+                      ? NetworkImage(lawyerImage!)
+                      : null,
+                  backgroundColor: AppColors.border,
+                  child: lawyerImage == null
+                      ? const Icon(Icons.person, color: AppColors.textMuted)
+                      : null,
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: RichText(
                     text: TextSpan(
@@ -115,7 +125,7 @@ class RecentCaseCard extends StatelessWidget {
                         TextSpan(
                           text: '$lawyerName ',
                           style: const TextStyle(
-                            color: AttorniumTheme.info,
+                            color: AppColors.info,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -128,7 +138,7 @@ class RecentCaseCard extends StatelessWidget {
             ),
           ],
           if (hasActions) ...[
-            const SizedBox(height: 20),
+            const SizedBox(height: AppSpacing.xl),
             Row(
               children: [
                 Expanded(
@@ -138,7 +148,7 @@ class RecentCaseCard extends StatelessWidget {
                     label: const Text('รายละเอียด'),
                   ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () {},
@@ -150,48 +160,54 @@ class RecentCaseCard extends StatelessWidget {
             ),
           ],
           if (isSearching) ...[
-            const SizedBox(height: 20),
+            const SizedBox(height: AppSpacing.xl),
             Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(AppSpacing.sm),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: AttorniumTheme.border),
+                    border: Border.all(color: AppColors.border),
                   ),
-                  child: const Icon(Icons.search, color: AttorniumTheme.textPrimary, size: 16),
+                  child: const Icon(
+                    Icons.search,
+                    color: AppColors.textPrimary,
+                    size: 16,
+                  ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: Text(
                     'กำลังค้นหาทนายที่เหมาะสมที่สุด...',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AttorniumTheme.textSecondary,
+                      color: AppColors.textSecondary,
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: AppSpacing.xl),
             Row(
               children: [
                 Expanded(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: AppRadius.extraSmall,
                     child: LinearProgressIndicator(
                       value: searchProgress,
-                      backgroundColor: AttorniumTheme.border,
-                      valueColor: const AlwaysStoppedAnimation<Color>(AttorniumTheme.gold500),
+                      backgroundColor: AppColors.border,
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                        AppColors.gold500,
+                      ),
                       minHeight: 8,
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: AppSpacing.lg),
                 Text(
                   '${((searchProgress ?? 0) * 100).toInt()}%',
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                    color: AttorniumTheme.gold500,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelMedium?.copyWith(color: AppColors.gold500),
                 ),
               ],
             ),

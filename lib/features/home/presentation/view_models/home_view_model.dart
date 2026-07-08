@@ -1,6 +1,6 @@
+import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/theme/app_theme.dart';
 import '../../domain/entities/case_entity.dart';
 import 'home_state.dart';
 
@@ -26,8 +26,8 @@ class HomeViewModel extends _$HomeViewModel {
             title: 'ปรึกษาสัญญาเช่าอาคาร',
             caseId: 'LC-8821',
             status: 'จับคู่แล้ว',
-            statusColor: AttorniumTheme.success,
-            statusBgColor: AttorniumTheme.successBg,
+            statusColor: AppColors.success,
+            statusBgColor: AppColors.successBg,
             lawyerName: 'ทนายสมศักดิ์',
             lawyerAction: 'กำลังร่างเอกสารให้คุณ',
             lawyerImage: 'https://i.pravatar.cc/150?img=11',
@@ -38,8 +38,8 @@ class HomeViewModel extends _$HomeViewModel {
             title: 'ขอคำปรึกษาภาษีมรดก',
             caseId: 'LC-7944',
             status: 'กำลังดำเนินการ',
-            statusColor: AttorniumTheme.info,
-            statusBgColor: AttorniumTheme.infoBg,
+            statusColor: AppColors.info,
+            statusBgColor: AppColors.infoBg,
             icon: Icons.folder_special,
             isSearching: true,
             searchProgress: 0.45,

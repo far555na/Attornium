@@ -7,8 +7,9 @@ import '../../features/messages/presentation/pages/messages_page.dart';
 import '../../features/my_cases/presentation/pages/my_cases_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
+  debugLabel: 'root',
+);
 
 final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
@@ -22,10 +23,7 @@ final appRouter = GoRouter(
         // Branch 0: Home
         StatefulShellBranch(
           routes: [
-            GoRoute(
-              path: '/',
-              builder: (context, state) => const HomePage(),
-            ),
+            GoRoute(path: '/', builder: (context, state) => const HomePage()),
           ],
         ),
         // Branch 1: My Cases
