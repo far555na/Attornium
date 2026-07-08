@@ -179,7 +179,7 @@ class AttorniumTheme {
           borderRadius: BorderRadius.circular(24),
           side: const BorderSide(color: border),
         ),
-        shadowColor: navy900.withOpacity(0.08),
+        shadowColor: navy900.withValues(alpha: 0.08),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -187,7 +187,7 @@ class AttorniumTheme {
           backgroundColor: navy900,
           foregroundColor: Colors.white,
           elevation: 4,
-          shadowColor: navy900.withOpacity(0.18),
+          shadowColor: navy900.withValues(alpha: 0.18),
           minimumSize: const Size.fromHeight(52),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           shape: RoundedRectangleBorder(
@@ -312,7 +312,7 @@ class AttorniumTheme {
     border: Border.all(color: border),
     boxShadow: [
       BoxShadow(
-        color: navy900.withOpacity(0.08),
+        color: navy900.withValues(alpha: 0.08),
         blurRadius: 24,
         offset: const Offset(0, 10),
       ),
@@ -325,7 +325,7 @@ class AttorniumTheme {
     border: Border.all(color: border),
     boxShadow: [
       BoxShadow(
-        color: navy900.withOpacity(0.06),
+        color: navy900.withValues(alpha: 0.06),
         blurRadius: 18,
         offset: const Offset(0, 8),
       ),
@@ -342,10 +342,10 @@ class AttorniumTheme {
       ],
     ),
     borderRadius: BorderRadius.circular(24),
-    border: Border.all(color: gold500.withOpacity(0.75)),
+    border: Border.all(color: gold500.withValues(alpha: 0.75)),
     boxShadow: [
       BoxShadow(
-        color: navy900.withOpacity(0.3),
+        color: navy900.withValues(alpha: 0.3),
         blurRadius: 28,
         offset: const Offset(0, 14),
       ),
@@ -365,7 +365,7 @@ class AttorniumTheme {
     borderRadius: BorderRadius.circular(18),
     boxShadow: [
       BoxShadow(
-        color: gold500.withOpacity(0.3),
+        color: gold500.withValues(alpha: 0.3),
         blurRadius: 18,
         offset: const Offset(0, 8),
       ),

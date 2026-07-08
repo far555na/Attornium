@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../view_models/home_view_model.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../widgets/new_case_card.dart';
 import '../widgets/recent_case_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeState = ref.watch(homeViewModelProvider);
+
     return Scaffold(
       backgroundColor: AttorniumTheme.navy900,
       body: CustomScrollView(
@@ -151,29 +155,26 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    const RecentCaseCard(
-                      title: 'ปรึกษาสัญญาเช่าอาคาร',
-                      caseId: 'LC-8821',
-                      status: 'จับคู่แล้ว',
-                      statusColor: AttorniumTheme.success,
-                      statusBgColor: AttorniumTheme.successBg,
-                      lawyerName: 'ทนายสมศักดิ์',
-                      lawyerAction: 'กำลังร่างเอกสารให้คุณ',
-                      lawyerImage: 'https://i.pravatar.cc/150?img=11',
-                      icon: Icons.balance,
-                      hasActions: true,
-                    ),
-                    const SizedBox(height: 16),
-                    const RecentCaseCard(
-                      title: 'ขอคำปรึกษาภาษีมรดก',
-                      caseId: 'LC-7944',
-                      status: 'กำลังดำเนินการ',
-                      statusColor: AttorniumTheme.info,
-                      statusBgColor: AttorniumTheme.infoBg,
-                      icon: Icons.folder_special,
-                      isSearching: true,
-                      searchProgress: 0.45,
-                    ),
+                    if (homeState.isLoading)
+                      const Center(child: CircularProgressIndicator(color: AttorniumTheme.gold500))
+                    else
+                      ...homeState.recentCases.map((caseEntity) => Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: RecentCaseCard(
+                              title: caseEntity.title,
+                              caseId: caseEntity.caseId,
+                              status: caseEntity.status,
+                              statusColor: caseEntity.statusColor,
+                              statusBgColor: caseEntity.statusBgColor,
+                              lawyerName: caseEntity.lawyerName,
+                              lawyerAction: caseEntity.lawyerAction,
+                              lawyerImage: caseEntity.lawyerImage,
+                              icon: caseEntity.icon,
+                              hasActions: caseEntity.hasActions,
+                              isSearching: caseEntity.isSearching,
+                              searchProgress: caseEntity.searchProgress,
+                            ),
+                          )),
                   ],
                 ),
               ),

@@ -58,7 +58,7 @@ class NewCaseCard extends StatelessWidget {
                         Text(
                           'อธิบายปัญหาของคุณ เพื่อหาทนายที่เชี่ยวชาญเฉพาะทางมาช่วยดูแลคดีของคุณอย่างมืออาชีพ',
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.white.withOpacity(0.85),
+                            color: Colors.white.withValues(alpha: 0.85),
                             height: 1.6,
                           ),
                         ),
