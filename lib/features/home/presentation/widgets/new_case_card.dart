@@ -1,15 +1,15 @@
 import 'package:attornium/core/theme/app_spacing.dart';
 import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../../../../core/widgets/app_card.dart';
+import '../../../../core/widgets/app_button.dart';
 
 class NewCaseCard extends StatelessWidget {
   const NewCaseCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: AttorniumTheme.navyCard,
+    return AppCard.navy(
       padding: const EdgeInsets.all(AppSpacing.xxl),
       child: Stack(
         clipBehavior: Clip.none,
@@ -76,33 +76,10 @@ class NewCaseCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: AppSpacing.xxl),
-              Container(
-                decoration: AttorniumTheme.goldButton,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    foregroundColor: AppColors.navy900,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.chat_outlined, size: 22),
-                      const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        'ปรึกษาทนายตอนนี้',
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(
-                              color: AppColors.navy900,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      const SizedBox(width: AppSpacing.sm),
-                      const Icon(Icons.chevron_right, size: 22),
-                    ],
-                  ),
-                ),
+              AppButton.secondary(
+                text: 'ปรึกษาทนายตอนนี้',
+                icon: Icons.chat_outlined,
+                onPressed: () {},
               ),
             ],
           ),

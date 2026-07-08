@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../view_models/home_view_model.dart';
 import '../widgets/new_case_card.dart';
 import '../widgets/recent_case_card.dart';
+import '../../../../core/widgets/app_scaffold.dart';
+import '../../../../core/widgets/app_loading.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -14,7 +16,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeViewModelProvider);
 
-    return Scaffold(
+    return AppScaffold(
       backgroundColor: AppColors.navy900,
       body: CustomScrollView(
         slivers: [
@@ -165,11 +167,7 @@ class HomePage extends ConsumerWidget {
                     ),
                     const SizedBox(height: AppSpacing.lg),
                     if (homeState.isLoading)
-                      const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.gold500,
-                        ),
-                      )
+                      const AppLoading()
                     else
                       ...homeState.recentCases.map(
                         (caseEntity) => Padding(
@@ -190,6 +188,7 @@ class HomePage extends ConsumerWidget {
                           ),
                         ),
                       ),
+                    const SizedBox(height: 60),
                   ],
                 ),
               ),

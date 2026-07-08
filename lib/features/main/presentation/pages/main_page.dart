@@ -1,5 +1,6 @@
 import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/widgets/app_scaffold.dart';
 import 'package:go_router/go_router.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 
@@ -10,7 +11,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       extendBody: true,
       backgroundColor: AppColors.navy900,
       body: navigationShell,

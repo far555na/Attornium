@@ -2,7 +2,8 @@ import 'package:attornium/core/theme/app_spacing.dart';
 import 'package:attornium/core/theme/app_radius.dart';
 import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../../../../core/widgets/app_card.dart';
+import '../../../../core/widgets/app_button.dart';
 
 class RecentCaseCard extends StatelessWidget {
   final String title;
@@ -36,9 +37,7 @@ class RecentCaseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: AttorniumTheme.whiteCard,
-      padding: const EdgeInsets.all(AppSpacing.xl),
+    return AppCard.white(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -142,18 +141,18 @@ class RecentCaseCard extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: OutlinedButton.icon(
+                  child: AppButton.outlined(
+                    text: 'รายละเอียด',
+                    icon: Icons.description_outlined,
                     onPressed: () {},
-                    icon: const Icon(Icons.description_outlined, size: 20),
-                    label: const Text('รายละเอียด'),
                   ),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
-                  child: ElevatedButton.icon(
+                  child: AppButton.primary(
+                    text: 'แชทกับทนาย',
+                    icon: Icons.chat_outlined,
                     onPressed: () {},
-                    icon: const Icon(Icons.chat_outlined, size: 20),
-                    label: const Text('แชทกับทนาย'),
                   ),
                 ),
               ],

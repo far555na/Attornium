@@ -1,12 +1,13 @@
 import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/widgets/app_scaffold.dart';
 
 class MyCasesPage extends StatelessWidget {
   const MyCasesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       backgroundColor: AppColors.navy900,
       body: Center(
         child: Text(
