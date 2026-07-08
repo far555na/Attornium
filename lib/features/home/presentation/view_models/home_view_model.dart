@@ -26,8 +26,8 @@ class HomeViewModel extends _$HomeViewModel {
             title: 'ปรึกษาสัญญาเช่าอาคาร',
             caseId: 'LC-8821',
             status: 'จับคู่แล้ว',
-            statusColor: AppColors.success,
-            statusBgColor: AppColors.successBg,
+            statusColor: AppColors.gold500,
+            statusBgColor: AppColors.goldSoft,
             lawyerName: 'ทนายสมศักดิ์',
             lawyerAction: 'กำลังร่างเอกสารให้คุณ',
             lawyerImage: 'https://i.pravatar.cc/150?img=11',
@@ -37,12 +37,12 @@ class HomeViewModel extends _$HomeViewModel {
           const CaseEntity(
             title: 'ขอคำปรึกษาภาษีมรดก',
             caseId: 'LC-7944',
-            status: 'กำลังดำเนินการ',
-            statusColor: AppColors.info,
-            statusBgColor: AppColors.infoBg,
-            icon: Icons.folder_special,
+            status: 'รอดำเนินการ',
+            statusColor: AppColors.textSecondary,
+            statusBgColor: AppColors.disabled,
+            icon: Icons.description,
             isSearching: true,
-            searchProgress: 0.45,
+            searchProgress: 0.25, // Just visual
           ),
         ],
       );

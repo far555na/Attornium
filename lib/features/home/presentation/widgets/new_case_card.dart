@@ -20,13 +20,10 @@ class NewCaseCard extends StatelessWidget {
             bottom: -10,
             child: Opacity(
               opacity: 0.15,
-              child: Transform.rotate(
-                angle: -0.2,
-                child: const Icon(
-                  Icons.history_edu,
-                  size: 140,
-                  color: AppColors.gold500,
-                ),
+              child: const Icon(
+                Icons.balance_rounded,
+                size: 200,
+                color: AppColors.gold500,
               ),
             ),
           ),
@@ -36,19 +33,19 @@ class NewCaseCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(AppSpacing.md),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: AppColors.gold500, width: 1.5),
-                    ),
-                    child: const Icon(
-                      Icons.post_add,
-                      color: AppColors.gold500,
-                      size: 28,
-                    ),
-                  ),
-                  const SizedBox(width: AppSpacing.lg),
+                  // Container(
+                  //   padding: const EdgeInsets.all(AppSpacing.md),
+                  //   decoration: BoxDecoration(
+                  //     shape: BoxShape.circle,
+                  //     border: Border.all(color: AppColors.gold500, width: 1.5),
+                  //   ),
+                  //   child: const Icon(
+                  //     Icons.post_add,
+                  //     color: AppColors.gold500,
+                  //     size: 28,
+                  //   ),
+                  // ),
+                  // const SizedBox(width: AppSpacing.lg),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -163,7 +163,7 @@ class AttorniumTheme {
       end: Alignment.bottomRight,
       colors: [AppColors.navy800, AppColors.navy900],
     ),
-    borderRadius: AppRadius.tripleExtraLarge,
+    borderRadius: AppRadius.doubleExtraLarge,
     border: Border.all(color: AppColors.gold500.withValues(alpha: 0.75)),
     boxShadow: AppShadows.glow,
   );

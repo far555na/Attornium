@@ -45,14 +45,14 @@ class RecentCaseCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.all(14),
+                padding: const EdgeInsets.all(AppSpacing.md),
                 decoration: const BoxDecoration(
                   color: AppColors.navy900,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(icon, color: AppColors.gold500, size: 28),
+                child: Icon(icon, color: AppColors.gold500, size: 24),
               ),
-              const SizedBox(width: AppSpacing.lg),
+              const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +63,7 @@ class RecentCaseCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: AppSpacing.xs),
                     Text(
                       'เลขที่คดี: $caseId',
                       style: Theme.of(context).textTheme.bodySmall,
@@ -73,30 +73,20 @@ class RecentCaseCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.md,
-                  vertical: 6,
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.xs,
                 ),
                 decoration: BoxDecoration(
                   color: statusBgColor,
                   borderRadius: AppRadius.rounded,
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (!isSearching) ...[
-                      Icon(Icons.check_circle, color: statusColor, size: 16),
-                      const SizedBox(width: 6),
-                    ] else ...[
-                      Icon(Icons.schedule, color: statusColor, size: 16),
-                      const SizedBox(width: 6),
-                    ],
-                    Text(
-                      status,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.labelSmall?.copyWith(color: statusColor),
-                    ),
-                  ],
+                child: Text(
+                  status,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: statusColor,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 10,
+                  ),
                 ),
               ),
             ],
@@ -123,10 +113,11 @@ class RecentCaseCard extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: '$lawyerName ',
-                          style: const TextStyle(
-                            color: AppColors.info,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: AppColors.navy900,
+                                fontWeight: FontWeight.w700,
+                              ),
                         ),
                         TextSpan(text: lawyerAction ?? ''),
                       ],
@@ -141,17 +132,27 @@ class RecentCaseCard extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: AppButton.outlined(
-                    text: 'รายละเอียด',
-                    icon: Icons.description_outlined,
+                  child: ElevatedButton(
                     onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.disabled,
+                      foregroundColor: AppColors.textPrimary,
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: AppRadius.large,
+                      ),
+                      textStyle: Theme.of(context).textTheme.labelLarge
+                          ?.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    child: const Text('รายละเอียด'),
                   ),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: AppButton.primary(
                     text: 'แชทกับทนาย',
-                    icon: Icons.chat_outlined,
                     onPressed: () {},
                   ),
                 ),
@@ -164,12 +165,12 @@ class RecentCaseCard extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.all(AppSpacing.sm),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
+                    color: AppColors.disabled,
                     shape: BoxShape.circle,
-                    border: Border.all(color: AppColors.border),
                   ),
                   child: const Icon(
-                    Icons.search,
+                    Icons.more_horiz,
                     color: AppColors.textPrimary,
                     size: 16,
                   ),
@@ -179,36 +180,23 @@ class RecentCaseCard extends StatelessWidget {
                   child: Text(
                     'กำลังค้นหาทนายที่เหมาะสมที่สุด...',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textSecondary,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: AppSpacing.xl),
-            Row(
-              children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: AppRadius.extraSmall,
-                    child: LinearProgressIndicator(
-                      value: searchProgress,
-                      backgroundColor: AppColors.border,
-                      valueColor: const AlwaysStoppedAnimation<Color>(
-                        AppColors.gold500,
-                      ),
-                      minHeight: 8,
-                    ),
-                  ),
+            ClipRRect(
+              borderRadius: AppRadius.extraSmall,
+              child: LinearProgressIndicator(
+                value: searchProgress,
+                backgroundColor: AppColors.border,
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                  AppColors.gold500,
                 ),
-                const SizedBox(width: AppSpacing.lg),
-                Text(
-                  '${((searchProgress ?? 0) * 100).toInt()}%',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.labelMedium?.copyWith(color: AppColors.gold500),
-                ),
-              ],
+                minHeight: 8,
+              ),
             ),
           ],
         ],

@@ -39,12 +39,12 @@ class HomePage extends ConsumerWidget {
                             const Icon(
                               Icons.account_balance,
                               color: AppColors.gold500,
-                              size: 28,
+                              size: 24,
                             ),
-                            const SizedBox(width: AppSpacing.md),
+                            const SizedBox(width: AppSpacing.sm),
                             Text(
-                              'LegalConnect',
-                              style: Theme.of(context).textTheme.titleLarge
+                              'Attornium',
+                              style: Theme.of(context).textTheme.titleMedium
                                   ?.copyWith(
                                     color: AppColors.gold500,
                                     fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class HomePage extends ConsumerWidget {
                                 width: 10,
                                 height: 10,
                                 decoration: const BoxDecoration(
-                                  color: AppColors.gold500,
+                                  color: AppColors.error,
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -90,7 +90,7 @@ class HomePage extends ConsumerWidget {
                           'สวัสดีครับ คุณสมชาย',
                           style: Theme.of(context).textTheme.headlineSmall
                               ?.copyWith(
-                                color: Colors.white,
+                                color: Theme.of(context).colorScheme.onPrimary,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
@@ -98,7 +98,11 @@ class HomePage extends ConsumerWidget {
                         Text(
                           'ยินดีต้อนรับกลับมา วันนี้มีอะไรให้เราช่วยไหมครับ?',
                           style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(color: Colors.white.withAlpha(204)),
+                              ?.copyWith(
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onPrimary.withAlpha(204),
+                              ),
                         ),
                         const SizedBox(height: AppSpacing.xxl),
                         const NewCaseCard(),
@@ -128,7 +132,7 @@ class HomePage extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
                     AppSpacing.xxl,
-                    AppSpacing.xxxl,
+                    AppSpacing.xxl,
                     AppSpacing.xxl,
                     AppSpacing.xxl,
                   ),
@@ -145,7 +149,9 @@ class HomePage extends ConsumerWidget {
                           TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: AppSpacing.xxs,
+                              ),
                               minimumSize: Size.zero,
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
@@ -156,7 +162,7 @@ class HomePage extends ConsumerWidget {
                                   style: Theme.of(context).textTheme.labelLarge
                                       ?.copyWith(color: AppColors.gold500),
                                 ),
-                                const SizedBox(width: AppSpacing.xs),
+                                // const SizedBox(width: AppSpacing.xs),
                                 const Icon(
                                   Icons.chevron_right,
                                   color: AppColors.gold500,
