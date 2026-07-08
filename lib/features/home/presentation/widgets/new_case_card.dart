@@ -1,6 +1,7 @@
 import 'package:attornium/core/theme/app_spacing.dart';
 import 'package:attornium/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_button.dart';
 
@@ -76,7 +77,9 @@ class NewCaseCard extends StatelessWidget {
               AppButton.secondary(
                 text: 'ปรึกษาทนายตอนนี้',
                 icon: Icons.chat_outlined,
-                onPressed: () {},
+                onPressed: () {
+                  context.push('/case-input');
+                },
               ),
             ],
           ),

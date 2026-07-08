@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/case_input/presentation/pages/case_input_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
 import '../../features/messages/presentation/pages/messages_page.dart';
@@ -15,6 +16,11 @@ final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
   routes: [
+    GoRoute(
+      path: '/case-input',
+      builder: (context, state) => const CaseInputPage(),
+    ),
+
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainPage(navigationShell: navigationShell);
