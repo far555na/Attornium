@@ -38,4 +38,7 @@ class AppColors {
   static const Color hint = Color(0xFF9AA0A6);
   static const Color disabled = Color(0xFFE6E8EA);
   static const Color unselectedIcon = Color(0xFFAAB0BA);
+  static const Color navSelectedBg = Color(
+    0x1AFFFFFF,
+  ); // Colors.white.withValues(alpha: 0.1)
 }

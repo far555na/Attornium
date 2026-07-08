@@ -32,7 +32,7 @@ class CustomBottomNavBar extends StatelessWidget {
             vertical: AppSpacing.xs,
           ),
           decoration: BoxDecoration(
-            color: AppColors.navy900,
+            color: AppColors.navy800,
             borderRadius: AppRadius.rounded,
             boxShadow: AppShadows.bottomNav,
           ),
@@ -90,19 +90,17 @@ class CustomBottomNavBar extends StatelessWidget {
     final theme = Theme.of(context).bottomNavigationBarTheme;
     final selectedColor = theme.selectedItemColor ?? AppColors.gold400;
     final unselectedColor =
-        theme.unselectedItemColor ?? const Color(0xFFAAB0BA);
+        theme.unselectedItemColor ?? AppColors.unselectedIcon;
 
     return Expanded(
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () => _onTap(context, index),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
           decoration: BoxDecoration(
-            color: isSelected
-                ? Colors.white.withValues(alpha: 0.1)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(32),
+            color: isSelected ? AppColors.navSelectedBg : Colors.transparent,
+            borderRadius: AppRadius.giantRadius,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -123,19 +121,17 @@ class CustomBottomNavBar extends StatelessWidget {
                         width: 8,
                         height: 8,
                         decoration: const BoxDecoration(
-                          color: Colors.red,
+                          color: AppColors.error,
                           shape: BoxShape.circle,
                         ),
                       ),
                     ),
                 ],
               ),
-              const SizedBox(height: 2),
+              // const SizedBox(height: AppSpacing.xxs),
               Text(
                 label,
-                style: TextStyle(
-                  fontFamily: theme.selectedLabelStyle?.fontFamily,
-                  fontSize: 10,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                   color: isSelected ? selectedColor : unselectedColor,
                 ),

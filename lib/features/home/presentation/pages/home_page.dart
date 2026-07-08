@@ -123,73 +123,78 @@ class HomePage extends ConsumerWidget {
                 ),
               ),
               clipBehavior: Clip.antiAlias,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.xxl,
-                  AppSpacing.xxxl,
-                  AppSpacing.xxl,
-                  AppSpacing.xxl,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'คดีล่าสุด',
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            minimumSize: Size.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xxl,
+                    AppSpacing.xxxl,
+                    AppSpacing.xxl,
+                    AppSpacing.xxl,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'คดีล่าสุด',
+                            style: Theme.of(context).textTheme.titleLarge
+                                ?.copyWith(fontWeight: FontWeight.bold),
                           ),
-                          child: Row(
-                            children: [
-                              Text(
-                                'ดูทั้งหมด',
-                                style: Theme.of(context).textTheme.labelLarge
-                                    ?.copyWith(color: AppColors.gold500),
-                              ),
-                              const SizedBox(width: AppSpacing.xs),
-                              const Icon(
-                                Icons.chevron_right,
-                                color: AppColors.gold500,
-                                size: 20,
-                              ),
-                            ],
+                          TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                              minimumSize: Size.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'ดูทั้งหมด',
+                                  style: Theme.of(context).textTheme.labelLarge
+                                      ?.copyWith(color: AppColors.gold500),
+                                ),
+                                const SizedBox(width: AppSpacing.xs),
+                                const Icon(
+                                  Icons.chevron_right,
+                                  color: AppColors.gold500,
+                                  size: 20,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppSpacing.lg),
-                    if (homeState.isLoading)
-                      const AppLoading()
-                    else
-                      ...homeState.recentCases.map(
-                        (caseEntity) => Padding(
-                          padding: const EdgeInsets.only(bottom: AppSpacing.lg),
-                          child: RecentCaseCard(
-                            title: caseEntity.title,
-                            caseId: caseEntity.caseId,
-                            status: caseEntity.status,
-                            statusColor: caseEntity.statusColor,
-                            statusBgColor: caseEntity.statusBgColor,
-                            lawyerName: caseEntity.lawyerName,
-                            lawyerAction: caseEntity.lawyerAction,
-                            lawyerImage: caseEntity.lawyerImage,
-                            icon: caseEntity.icon,
-                            hasActions: caseEntity.hasActions,
-                            isSearching: caseEntity.isSearching,
-                            searchProgress: caseEntity.searchProgress,
-                          ),
-                        ),
+                        ],
                       ),
-                    const SizedBox(height: 60),
-                  ],
+                      const SizedBox(height: AppSpacing.lg),
+                      if (homeState.isLoading)
+                        const AppLoading()
+                      else
+                        ...homeState.recentCases.map(
+                          (caseEntity) => Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: AppSpacing.lg,
+                            ),
+                            child: RecentCaseCard(
+                              title: caseEntity.title,
+                              caseId: caseEntity.caseId,
+                              status: caseEntity.status,
+                              statusColor: caseEntity.statusColor,
+                              statusBgColor: caseEntity.statusBgColor,
+                              lawyerName: caseEntity.lawyerName,
+                              lawyerAction: caseEntity.lawyerAction,
+                              lawyerImage: caseEntity.lawyerImage,
+                              icon: caseEntity.icon,
+                              hasActions: caseEntity.hasActions,
+                              isSearching: caseEntity.isSearching,
+                              searchProgress: caseEntity.searchProgress,
+                            ),
+                          ),
+                        ),
+                      const SizedBox(height: 60),
+                    ],
+                  ),
                 ),
               ),
             ),
