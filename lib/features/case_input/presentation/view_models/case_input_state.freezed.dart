@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CaseInputState {
 
- String get details; String? get selectedTopic;
+ String get details; String? get selectedTopic; String? get selectedProvince; double get progress; String get progressTitle; String get progressTrailingText;
 /// Create a copy of CaseInputState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CaseInputStateCopyWith<CaseInputState> get copyWith => _$CaseInputStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CaseInputState&&(identical(other.details, details) || other.details == details)&&(identical(other.selectedTopic, selectedTopic) || other.selectedTopic == selectedTopic));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CaseInputState&&(identical(other.details, details) || other.details == details)&&(identical(other.selectedTopic, selectedTopic) || other.selectedTopic == selectedTopic)&&(identical(other.selectedProvince, selectedProvince) || other.selectedProvince == selectedProvince)&&(identical(other.progress, progress) || other.progress == progress)&&(identical(other.progressTitle, progressTitle) || other.progressTitle == progressTitle)&&(identical(other.progressTrailingText, progressTrailingText) || other.progressTrailingText == progressTrailingText));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,details,selectedTopic);
+int get hashCode => Object.hash(runtimeType,details,selectedTopic,selectedProvince,progress,progressTitle,progressTrailingText);
 
 @override
 String toString() {
-  return 'CaseInputState(details: $details, selectedTopic: $selectedTopic)';
+  return 'CaseInputState(details: $details, selectedTopic: $selectedTopic, selectedProvince: $selectedProvince, progress: $progress, progressTitle: $progressTitle, progressTrailingText: $progressTrailingText)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $CaseInputStateCopyWith<$Res>  {
   factory $CaseInputStateCopyWith(CaseInputState value, $Res Function(CaseInputState) _then) = _$CaseInputStateCopyWithImpl;
 @useResult
 $Res call({
- String details, String? selectedTopic
+ String details, String? selectedTopic, String? selectedProvince, double progress, String progressTitle, String progressTrailingText
 });
 
 
@@ -62,11 +62,15 @@ class _$CaseInputStateCopyWithImpl<$Res>
 
 /// Create a copy of CaseInputState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? details = null,Object? selectedTopic = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? details = null,Object? selectedTopic = freezed,Object? selectedProvince = freezed,Object? progress = null,Object? progressTitle = null,Object? progressTrailingText = null,}) {
   return _then(_self.copyWith(
 details: null == details ? _self.details : details // ignore: cast_nullable_to_non_nullable
 as String,selectedTopic: freezed == selectedTopic ? _self.selectedTopic : selectedTopic // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,selectedProvince: freezed == selectedProvince ? _self.selectedProvince : selectedProvince // ignore: cast_nullable_to_non_nullable
+as String?,progress: null == progress ? _self.progress : progress // ignore: cast_nullable_to_non_nullable
+as double,progressTitle: null == progressTitle ? _self.progressTitle : progressTitle // ignore: cast_nullable_to_non_nullable
+as String,progressTrailingText: null == progressTrailingText ? _self.progressTrailingText : progressTrailingText // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -151,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String details,  String? selectedTopic)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String details,  String? selectedTopic,  String? selectedProvince,  double progress,  String progressTitle,  String progressTrailingText)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CaseInputState() when $default != null:
-return $default(_that.details,_that.selectedTopic);case _:
+return $default(_that.details,_that.selectedTopic,_that.selectedProvince,_that.progress,_that.progressTitle,_that.progressTrailingText);case _:
   return orElse();
 
 }
@@ -172,10 +176,10 @@ return $default(_that.details,_that.selectedTopic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String details,  String? selectedTopic)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String details,  String? selectedTopic,  String? selectedProvince,  double progress,  String progressTitle,  String progressTrailingText)  $default,) {final _that = this;
 switch (_that) {
 case _CaseInputState():
-return $default(_that.details,_that.selectedTopic);case _:
+return $default(_that.details,_that.selectedTopic,_that.selectedProvince,_that.progress,_that.progressTitle,_that.progressTrailingText);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +196,10 @@ return $default(_that.details,_that.selectedTopic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String details,  String? selectedTopic)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String details,  String? selectedTopic,  String? selectedProvince,  double progress,  String progressTitle,  String progressTrailingText)?  $default,) {final _that = this;
 switch (_that) {
 case _CaseInputState() when $default != null:
-return $default(_that.details,_that.selectedTopic);case _:
+return $default(_that.details,_that.selectedTopic,_that.selectedProvince,_that.progress,_that.progressTitle,_that.progressTrailingText);case _:
   return null;
 
 }
@@ -207,11 +211,15 @@ return $default(_that.details,_that.selectedTopic);case _:
 
 
 class _CaseInputState implements CaseInputState {
-  const _CaseInputState({this.details = '', this.selectedTopic});
+  const _CaseInputState({this.details = '', this.selectedTopic, this.selectedProvince, this.progress = 0.0, this.progressTitle = 'ความคืบหน้าการจับคู่ทนาย', this.progressTrailingText = '0%'});
   
 
 @override@JsonKey() final  String details;
 @override final  String? selectedTopic;
+@override final  String? selectedProvince;
+@override@JsonKey() final  double progress;
+@override@JsonKey() final  String progressTitle;
+@override@JsonKey() final  String progressTrailingText;
 
 /// Create a copy of CaseInputState
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +231,16 @@ _$CaseInputStateCopyWith<_CaseInputState> get copyWith => __$CaseInputStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CaseInputState&&(identical(other.details, details) || other.details == details)&&(identical(other.selectedTopic, selectedTopic) || other.selectedTopic == selectedTopic));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CaseInputState&&(identical(other.details, details) || other.details == details)&&(identical(other.selectedTopic, selectedTopic) || other.selectedTopic == selectedTopic)&&(identical(other.selectedProvince, selectedProvince) || other.selectedProvince == selectedProvince)&&(identical(other.progress, progress) || other.progress == progress)&&(identical(other.progressTitle, progressTitle) || other.progressTitle == progressTitle)&&(identical(other.progressTrailingText, progressTrailingText) || other.progressTrailingText == progressTrailingText));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,details,selectedTopic);
+int get hashCode => Object.hash(runtimeType,details,selectedTopic,selectedProvince,progress,progressTitle,progressTrailingText);
 
 @override
 String toString() {
-  return 'CaseInputState(details: $details, selectedTopic: $selectedTopic)';
+  return 'CaseInputState(details: $details, selectedTopic: $selectedTopic, selectedProvince: $selectedProvince, progress: $progress, progressTitle: $progressTitle, progressTrailingText: $progressTrailingText)';
 }
 
 
@@ -243,7 +251,7 @@ abstract mixin class _$CaseInputStateCopyWith<$Res> implements $CaseInputStateCo
   factory _$CaseInputStateCopyWith(_CaseInputState value, $Res Function(_CaseInputState) _then) = __$CaseInputStateCopyWithImpl;
 @override @useResult
 $Res call({
- String details, String? selectedTopic
+ String details, String? selectedTopic, String? selectedProvince, double progress, String progressTitle, String progressTrailingText
 });
 
 
@@ -260,11 +268,15 @@ class __$CaseInputStateCopyWithImpl<$Res>
 
 /// Create a copy of CaseInputState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? details = null,Object? selectedTopic = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? details = null,Object? selectedTopic = freezed,Object? selectedProvince = freezed,Object? progress = null,Object? progressTitle = null,Object? progressTrailingText = null,}) {
   return _then(_CaseInputState(
 details: null == details ? _self.details : details // ignore: cast_nullable_to_non_nullable
 as String,selectedTopic: freezed == selectedTopic ? _self.selectedTopic : selectedTopic // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,selectedProvince: freezed == selectedProvince ? _self.selectedProvince : selectedProvince // ignore: cast_nullable_to_non_nullable
+as String?,progress: null == progress ? _self.progress : progress // ignore: cast_nullable_to_non_nullable
+as double,progressTitle: null == progressTitle ? _self.progressTitle : progressTitle // ignore: cast_nullable_to_non_nullable
+as String,progressTrailingText: null == progressTrailingText ? _self.progressTrailingText : progressTrailingText // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

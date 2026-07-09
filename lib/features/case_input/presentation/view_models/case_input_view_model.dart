@@ -42,6 +42,18 @@ class CaseInputViewModel extends _$CaseInputViewModel {
     }
   }
 
+  void selectProvince(String? province) {
+    state = state.copyWith(selectedProvince: province);
+  }
+
+  void updateProgress(double progress, String trailingText, {String? title}) {
+    state = state.copyWith(
+      progress: progress,
+      progressTrailingText: trailingText,
+      progressTitle: title ?? state.progressTitle,
+    );
+  }
+
   String getUpdatedTextForTopicToggle(
     String topic,
     String currentText,

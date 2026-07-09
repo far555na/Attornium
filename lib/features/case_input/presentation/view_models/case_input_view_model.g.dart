@@ -42,7 +42,7 @@ final class CaseInputViewModelProvider
 }
 
 String _$caseInputViewModelHash() =>
-    r'eff5eff3414e8fc007f9250578d19bb9285b9ac8';
+    r'c823e4d5b0580a5b2621fa7fb367a60807a8e3aa';
 
 abstract class _$CaseInputViewModel extends $Notifier<CaseInputState> {
   CaseInputState build();

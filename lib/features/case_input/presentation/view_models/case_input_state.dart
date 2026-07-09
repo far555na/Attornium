@@ -7,5 +7,9 @@ abstract class CaseInputState with _$CaseInputState {
   const factory CaseInputState({
     @Default('') String details,
     String? selectedTopic,
+    String? selectedProvince,
+    @Default(0.0) double progress,
+    @Default('ความคืบหน้าการจับคู่ทนาย') String progressTitle,
+    @Default('0%') String progressTrailingText,
   }) = _CaseInputState;
 }
